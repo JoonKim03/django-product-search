@@ -1,0 +1,71 @@
+{% extends "search/base.html" %}
+
+{% block contents %}
+
+{% load static %}
+
+<style>
+    body{
+    margin-top:50px;  /*pc에서는 상하단에 여백을 두자.. 너무 꽉차면 붙어있으니까 */
+    margin-bottom:50px;
+       width: 100%;
+    }
+    #thema_wrapper {
+    border:1px solid #eee;
+       max-width: none !important;
+       min-width:500px;
+       width:500px;
+       margin: 0 auto;
+    }
+
+    /*body{background-color:#000 !important;}
+    style="background-color:#000 !important;" bgcolor="#000"
+    */
+
+</style>
+
+<div id='thema_wrapper' class="wrapper  ko">
+    <div style="width:100% ; background-color:#fff;text-align:center;">
+        <img src="{% static 'logo2.png' %}" class="img-thumbnail" alt="" style="border:0px;">
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <h1> 로그인 </h1>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <form method="POST" action=".">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <input type="{{ field.field.widget.input_type }}" class="form-control" id="{{ field.id_for_label }}" placeholder="{{ field.label }}" name="{{ field.name }}" />
+                </div>
+                {% if field.errors %}
+                <span style="color: red">{{ field.errors }}</span>
+                {% endif %}
+                {% endfor %}
+
+                {% for message in messages %}
+                <div class="'alert-success">
+                    <a class="close" href="#" data-dismiss="'alert"></a>
+                    {{ message }}
+                </div>
+                {% endfor %}
+                <br>
+              <button type="submit" class="btn btn-primary"> 로그인 </button>
+            </form>
+            <br>
+            <ul class="nav navbar-nav navbar-right">
+                <form id="logout" method="POST" action="{% url 'user:logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">  로그아웃 </button>
+                </form>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

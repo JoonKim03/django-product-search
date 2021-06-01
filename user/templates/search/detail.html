@@ -1,0 +1,82 @@
+{% extends 'search/base.html' %}
+{% load humanize %}
+{% block contents %}
+
+{% csrf_token %}
+<div class="row mt-5">
+    <div class="col-12">
+        <table class="table table-light">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">제품명</th>
+                    <th scope="col">품번</th>
+                    <th scope="col">가격</th>
+                    <th scope="col">성별</th>
+                    <th scope="col">디비전</th>
+                    <th scope="col">카테고리</th>
+                    <th scope="col">URL</th>
+                </tr>
+            </thead>
+            <tbody class="text-dark">
+                <tr>
+                    <th scope="row">{{ data.product_name }}</th>
+                    <th scope="row">{{ data.product_code }}</th>
+                    <th scope="row">{{ data.price|intcomma }}원</th>
+                    <th scope="row">{{ data.gender }}</th>
+                    <th scope="row">{{ data.division }}</th>
+                    <th scope="row">{{ data.category }}</th>
+                    <th><a href="{{ data.url }}">링크</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card" style="width:100%;">
+                <div class="card-body">
+                    <p><b><strong>{{ data.store }}</strong></b></p>
+                    <p><b><strong>{{ data.title }}</strong></b></p>
+                    <br><p>{{ data.content }}</p><br>
+                    <p>{{ data.product_name }}
+                        <br>({{ data.product_code }})
+                        <br>사이즈 : -- 사이즈 입력 --
+                        <br>금액  : {{ data.price|intcomma}}원<br>
+                    </p>
+                    {% if data.kakao == "kakao" %}
+                    <p><strong> 제품 문의 </strong>
+                        <br>제품 문의 👉🏻 '{{ data.kakao_store }}' 카카오톡 채널
+                        <br>※재고는 실시간으로 변할 수 있습니다.
+                    </p>
+                    {% else %}
+                    <p><strong> 제품 문의 </strong>
+                        <br>제품 문의는 아래 매장 연락처로 연락바랍니다.
+                        <br>※재고는 실시간으로 변할 수 있습니다.
+                    </p>
+                    {% endif %}
+                    <br>
+                    <p> <strong> ✔ 매장안내 </strong>
+                        <br> {{ data.address }}
+                        <br> ☎ {{ data.phone_number }}
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<h2 style="text-align:center"> <strong>제품 이미지 </strong></h2>
+<div class="container">
+    <div style="width:100%">
+      {% for img in data.img %}
+          <div style="float:left; width:300px; height:300px;">
+              <img src="{{ img }}" class="img-thumbnail" alt="">
+          </div>
+      {% endfor%}
+    </div>
+</div>
+{% endblock %}
