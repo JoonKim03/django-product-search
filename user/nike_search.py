@@ -42,7 +42,7 @@ class search():
 #        soup = BeautifulSoup(data.text)
 
         # json 파일 읽기
-        with open('nike_product_code.json') as f:
+        with open('/home/nike_product_code.json') as f:
             data = json.loads(f.read())
 
         product_url = data[product_code]
