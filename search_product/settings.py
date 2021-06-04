@@ -28,10 +28,10 @@ DEBUG = True
 #DEBUG = bool(int(os.environ.get('DEBUG',0)))
 
 ALLOWED_HOSTS = [
-    "search.dypass.co.kr",
+    ".daeyeon.shop",
     ".ap-northeast-2.compute.amazonaws.com",
-    "127.0.0.1",
-    "0.0.0.0"
+#    "127.0.0.1",
+#    "0.0.0.0"
 ]
 
 #ALLOWED_HOSTS_ENV = os.environ.get('ALLOWED_HOSTS')
