@@ -44,30 +44,30 @@
                         <br>&nbsp;&nbsp;
                     </strong></b></p>
 
-                    <br><p>{{ data.content }}
-                        <br>&nbsp;&nbsp;
-                    </p><br>
+                    <p>{{ data.content }}
+                    </p>
+                    <br>&nbsp;&nbsp;
 
                     <p>{{ data.product_name }}
                         <br>({{ data.product_code }})
                         <br>사이즈 : -- 사이즈 입력 --
-                        <br>금액  : {{ data.price|intcomma}}원<br>
+                        <br>금액  : {{ data.price|intcomma}}원
+                        <br>&nbsp;&nbsp;
                     </p>
-                    <br>&nbsp;&nbsp;
+
                     {% if data.kakao == "kakao" %}
                     <p><strong> 제품 문의 </strong>
                         <br>제품 문의 👉🏻 '{{ data.kakao_store }}' 카카오톡 채널
                         <br>※재고는 실시간으로 변할 수 있습니다.
                     </p>
-                    <br>&nbsp;&nbsp;
+
                     {% else %}
                     <p><strong> 제품 문의 </strong>
                         <br>제품 문의는 아래 매장 연락처로 연락바랍니다.
                         <br>※재고는 실시간으로 변할 수 있습니다.
                     </p>
-                    <br>&nbsp;&nbsp;
+
                     {% endif %}
-                    <br>&nbsp;&nbsp;
                     <p> <strong> ✔ 매장안내 </strong>
                         <br> {{ data.address }}
                         <br> ☎ {{ data.phone_number }}
