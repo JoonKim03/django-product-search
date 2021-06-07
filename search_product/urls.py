@@ -21,7 +21,8 @@ from user.views import LoginView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', LoginView.as_view()),
+    path('/', LoginView.as_view()),
+    #path('login/', LoginView.as_view()),
     #path('logout/', logout),
 #    path('search/',SearchProduct.as_view()),
 #    path('detail', ProductDetail.as_view())

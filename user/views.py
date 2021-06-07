@@ -20,7 +20,8 @@ class LoginView(FormView):
 def logout(request):
     if 'user' in request.session:
         del(request.session['user'])
-    return redirect('/login') # 로그인 페이지로
+    #return redirect('/login') # 로그인 페이지로
+    return redirect('/')  # 로그인 페이지로
 
     ################################################
     ################################################
@@ -30,7 +31,8 @@ def search_product(request):
     user = request.session.get('user')
     if not user:
         messages.error(request, '로그인해주세요.')
-        return redirect('/login/')
+        #return redirect('/login/')
+        return redirect('/')
     # 로그인 안하고 글 작성 시 오류 발생
     #if not request.session.get('email'):
     #    return redirect('login/')
@@ -63,4 +65,5 @@ def detail(request):
                 return redirect('/main/search/')
         else:
             messages.error(request,'로그인해주세요.')
-            return redirect('/login/')
+            #return redirect('/login/')
+            return redirect('/')
