@@ -33,22 +33,24 @@
 
 </style>
 
-{% load static %}
-<div id="thema_wrapper" style="display: flex; justify-content: center;" >
-    <div class="row mt-5">
-        <div id="content">
-              <img src="/static/logo2.png" class="img-thumbnail" alt="" style="border:0px;">
-        </div>
-        <div class="col-12" style="display: flex; justify-content: center;">
-            <form id="contents" name="contents" method="POST" action="{% url 'user:detail' %}">
-                {% csrf_token %}
-                <p><br>
-                품번을 입력하세요 : <input class="center-block" name="product_code" type="text">
+<body>
+    {% load static %}
+    <div id="thema_wrapper" style="display: flex; justify-content: center;" >
+        <div class="row mt-5">
+            <div id="content">
+                  <img src="/static/logo2.png" class="img-thumbnail" alt="" style="border:0px;">
+            </div>
+            <div class="col-12" style="display: flex; justify-content: center;">
+                <form id="contents" name="contents" method="POST" action="{% url 'user:detail' %}">
+                    {% csrf_token %}
+                    <p><br>
+                    품번을 입력하세요 : <input class="center-block" name="product_code" type="text">
 
-                <button type="submit" class="btn btn-primary" >검색</button>
-                </p>
-            </form>
+                    <button type="submit" class="btn btn-primary" >검색</button>
+                    </p>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+</body>
 {% endblock %}
